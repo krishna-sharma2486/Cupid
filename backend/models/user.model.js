@@ -34,19 +34,17 @@ const userSchema = new mongoose.Schema({
     crush : {
         type: String,
     },
-    socials : {
-        type: {
-            instagram : String,
-            facebook : String,
-            linkedin : String,
-            twitter : String
-        },
-        default: {
-            instagram : "",
-            facebook : "",
-            linkedin : "",
-            twitter : ""
-        }
+    instagram_username : {
+        type: String,
+    },
+    facebook_username : {
+        type: String,
+    },
+    linkedin_username : {
+        type: String,
+    },
+    twitter_username : {
+        type: String,
     },
 }, {timestamps: true})
 

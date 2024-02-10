@@ -10,10 +10,9 @@ const dbSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email : {
+    branch : {
         type: String,
         required: true,
-        unique: true
     },
 });
 
