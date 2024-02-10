@@ -1,0 +1,55 @@
+<form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="photo" id="photoInput">
+    <button type="submit">Upload</button>
+  </form>
+  
+  <script>
+
+  function readyUpload(){
+    const obj = {
+      "photo" : document.getElementById('photoInput').files[0],
+      "name":"John Doe",
+      "rollNo" : 22124001,
+      "email" : "john.doe.22@nitj.ac.in",
+      "gender" : "M",
+      "password": "1234",
+      "branch" : "CSE",
+      "crush" : "Sophia Martinez",
+      "socials":{
+        "instagram":"aman.cha.ndra"
+        }
+    }
+    
+    const formData = new FormData();
+
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (key === 'photo') {
+          formData.append(key, document.getElementById('photoInput').files[0]);
+        } else {
+          formData.append(key, obj[key]);
+        }
+      }
+    }
+
+    return formData;
+  }
+  document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = await readyUpload();
+  
+    try {
+      const response = await fetch('http://127.0.0.1:8888/users/signup', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
+  </script>
+  
