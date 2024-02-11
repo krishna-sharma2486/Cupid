@@ -6,42 +6,24 @@
   <script>
 
   function readyUpload(){
-    // const obj = {
-    //   "photo" : document.getElementById('photoInput').files[0],
-    //   "name":"Aman Chandra",
-    //   "rollNo" : 22124009,
-    //   "email" : "amanc.it.23@nitj.ac.in",
-    //   "gender" : "M",
-    //   "password": "4444",
-    //   "branch" : "IT",
-    //   "crush" : "Isha",
-    //   "socials":{
-    //     "instagram":"aman.cha.ndra",
-    //   }
-    // }
 
     const obj = {
       "photo" : document.getElementById('photoInput').files[0],
-      "name":"Isha Nanda",
-      "rollNo" : 22124045,
-      "email" : "ishan.it.22@nitj.ac.in",
-      "gender" : "F",
+      "name":"Aman Rao",
+      "rollNo" : 22124019,
+      "email" : "amant.it.22@nitj.ac.in",
+      "gender" : "M",
       "password": "4444",
       "branch" : "IT",
-      "crush" : "Shubham Nanda",
-      "socials":{
-        "instagram":"nanda.isha",
-      }
+      "crush" : "Shreya",
+      "instagram_username":"integralbaji"
     }
     
     const formData = new FormData();
 
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
-        if(key == 'photo')
-          formData.append(key, obj[key]);
-        else 
-          formData.append(key, obj[key]);
+        formData.append(key, obj[key]);
       }
     }
 
