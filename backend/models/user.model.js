@@ -34,6 +34,13 @@ const userSchema = new mongoose.Schema({
     crush : {
         type: String,
     },
+    crush_branch : {
+        type: String,
+    },
+    popularity : {
+        type: Number,
+        default: 0
+    },
     instagram_username : {
         type: String,
     },

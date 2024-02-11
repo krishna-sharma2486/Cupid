@@ -6,6 +6,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 const bodyParser = require('body-parser');
 const userRoutes = require("./routes/userRoutes");
+const axios = require('axios');
+const cron = require('node-cron');
 
 const app = express()
 
@@ -14,6 +16,19 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
     app.listen(process.env.PORT, () => {
         console.log('Connected & Server is running on ' + process.env.PORT + '...');
     })
+
+    // cron.schedule('* * * * *', () => {
+    //     axios.patch('http://127.0.0.1:8888/users/match_popularity')
+    //         .then(res => {
+    //             console.log(res.data.message);
+    //         })
+    //         .catch(err => {
+    //             console.error(err.message);
+    //         });
+    // }, {
+    //     scheduled: true,
+    //     timezone: 'Asia/Kolkata'
+    // });
 })
 .catch((err) => {
     console.log(err);
