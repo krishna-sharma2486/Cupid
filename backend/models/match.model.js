@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const matchSchema = new mongoose.Schema({
-    user : {
+    user1 : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
     },
-    match : {
+    user2 : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
     },
