@@ -11,10 +11,6 @@ const storage = multer.diskStorage({
 });
 
 const handleUploadPhoto = (req, res, next) => {
-    if(!req.body.photo){
-        next();
-        return;
-    }
     const upload = multer({
         storage: storage,
         limits: { fileSize: 1000000 },
