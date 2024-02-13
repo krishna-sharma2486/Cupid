@@ -35,7 +35,7 @@
     const formData = await readyUpload();
 
     try {
-      const response = await fetch('http://127.0.0.1:8888/users/signup', {
+      const response = await fetch('http://127.0.0.1:5050/signin.html', {
         method: 'POST',
         body: formData,
       });

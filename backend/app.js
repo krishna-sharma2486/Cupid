@@ -35,9 +35,18 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
     return
 })
 
+const allowedOrigins = ['http://127.0.0.1:5500/Frontend/Form/signin.html', 'http://127.0.0.1:5500/Frontend/Form/signup.html'];
 /* middleware & static files*/
 app.use(cors({
-    origin: 'http://127.0.0.1:5500'
+    // 
+    origin: function(origin, callback) {
+        // Check if the origin is in the list of allowed origins
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+          callback(null, true); // Allow the request
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+    }
 }));
 app.use(morgan("dev"))
 

@@ -166,7 +166,7 @@ section {
       border: 1px solid rgba(255, 255, 255, 0.2);
       background: rgba(255, 255, 255, 0.2);
       padding: 8px 10px;
-      padding-left: 40px;
+      padding-left: 10px;
       border-radius: 15px;
       color: #fff;
       font-size: 16px;
@@ -278,8 +278,8 @@ section {
           
          <div class="container"> 
           <div class="form"> 
-            <h2>LOGIN to CodePen</h2>
-            <form action="">
+            <h2>Register to CUPID</h2>
+            <form action="http://127.0.0.1:8888" method="post">
               <div class="inputBx">
                 <input type="text" required="required">
                 <span>Roll No.</span>
@@ -310,11 +310,11 @@ section {
               <!-- <label class="remember"><input type="checkbox">
                 Remember</label> -->
               <div class="inputBx" style="margin-left: 35px;">
-                <input type="button" value="Register" disabled> 
+                <input type="submit" value="Register" > 
               </div>
             </form>
             <!-- <p>Forgot password? <a href="#">Click Here</a></p> -->
-            <p>Already have an account?  <a href="/signin.html">  Sign In</a></p>
+            <p>Already have an account?  <a href="http://127.0.0.1:5500/Frontend/Forms/signin.html">  Sign In</a></p>
           </div>
         </div>
           
@@ -333,6 +333,36 @@ section {
         }
         return false;
     }
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('login-form');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        
+        // Serialize form data
+        const formData = new FormData(form);
+        
+        // Create and configure the request
+        const request = new XMLHttpRequest();
+        request.open('POST', '127.0.0.1:8888'); // Replace with your server-side script URL
+        request.setRequestHeader('Content-Type', 'application/json');
+
+        // Handle the response
+        request.onload = function() {
+          if (request.status >= 200 && request.status < 300) {
+            // Success: Do something with the response
+            console.log('Data posted successfully');
+            console.log(request.responseText);
+          } else {
+            // Error: Handle the error
+            console.error('Error posting data');
+          }
+        };
+
+        // Send the request with form data
+        request.send(JSON.stringify(Object.fromEntries(formData)));
+      });
+    });
     </script>
       
 </body>
